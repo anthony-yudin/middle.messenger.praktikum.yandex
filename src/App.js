@@ -27,6 +27,8 @@ export default class App {
   render() {
     let template;
 
+    this.appElementinnerHTML = '';
+
     switch (this.state.currentPage) {
       case 'reg':
         template = Handlebars.compile(Pages.Reg);
@@ -48,9 +50,7 @@ export default class App {
         break;
       case 'profile':
         template = Handlebars.compile(Pages.Profile);
-        this.appElement.innerHTML = template({
-          chats: this.state.chats,
-        });
+        this.appElement.innerHTML = template({});
         break;
       case 'error404':
         template = Handlebars.compile(Pages.error404);
@@ -65,9 +65,16 @@ export default class App {
   }
 
   attachEventListeners() {
-    const footerLinks = document.querySelectorAll('a');
+    this.appElement.insertAdjacentHTML('beforeEnd',`
+      <a href="#" data-page="auth">Авторизация</a>
+      <a href="#" data-page="reg">Регистрация</a>
+      <a href="#" data-page="profile">Профиль</a>
+      <a href="#" data-page="error404">404</a>
+      <a href="#" data-page="error500">500</a>
+      <a href="#" data-page="chat">Чат</a>
+    `);
 
-    footerLinks.forEach(link => {
+    document.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         this.changePage(e.target.dataset.page);
