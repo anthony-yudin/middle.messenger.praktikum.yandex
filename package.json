@@ -1,0 +1,24 @@
+{
+  "name": "messenger",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite build && node server.cjs",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "less": "^4.2.0",
+    "vite": "^5.4.1"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "express": "^4.21.0",
+    "handlebars": "^4.7.8",
+    "path": "^0.12.7",
+    "postcss-preset-env": "^10.0.3",
+    "vite-plugin-svg-spriter": "^1.0.0"
+  }
+}

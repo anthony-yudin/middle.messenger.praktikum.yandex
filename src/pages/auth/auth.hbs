@@ -1,0 +1,12 @@
+<main class="form-auth-reg">
+  <form class="form-auth-reg__box">
+    <div class="form-auth-reg__title">Вход</div>
+
+    {{> FormItem data=data }}
+    {{> Link href="#" class="btn" data-page="chat" text="Авторизоваться" }}
+
+    <div class="form-auth-reg__link-auth-reg-box">
+      {{> Link href="#" class="form-auth-reg__link-auth-reg" data-page="reg" text="Нет аккаунта?" }}
+    </div>
+  </form>
+</main>
