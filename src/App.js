@@ -66,12 +66,25 @@ export default class App {
 
   attachEventListeners() {
     this.appElement.insertAdjacentHTML('beforeEnd',`
-      <a href="#" data-page="auth">Авторизация</a>
-      <a href="#" data-page="reg">Регистрация</a>
-      <a href="#" data-page="profile">Профиль</a>
-      <a href="#" data-page="error404">404</a>
-      <a href="#" data-page="error500">500</a>
-      <a href="#" data-page="chat">Чат</a>
+      <nav class="navigation">
+        <ul class="navigation__box">
+          <li class="navigation__item">
+            <a href="#" data-page="auth">Авторизация</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" data-page="reg">Регистрация</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" data-page="error404">404</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" data-page="error500">500</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" data-page="chat">Чат</a>
+          </li>
+        </ul>
+      </nav>
     `);
 
     document.querySelectorAll('a').forEach(link => {

@@ -1,12 +1,15 @@
 @color_blue: #3369F3;
+@color_gray: #FBFBFB;
+@color_main_text: #999999;
+@color_black: #1E1E1E;
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    color: #999999;
-    fill: #999999;
+    color: @color_main_text;
+    fill: @color_main_text;
     margin: 0;
     font-weight: 500;
     font-family: Inter, sans-serif;
@@ -19,7 +22,7 @@ body {
     &__left {
         height: 100vh;
         padding: 21px 10px 0;
-        background: #FBFBFB;
+        background: @color_gray;
     }
 
     &__left-header {
@@ -29,7 +32,7 @@ body {
     }
 
     &__left-link-profile {
-        color: #999999;
+        color: @color_main_text;
         float: right;
         font-size: 12px;
         line-height: 12px;
@@ -102,7 +105,7 @@ body {
     }
 
     &__left-list-content-title {
-        color: #1E1E1E;
+        color: @color_black;
         font-size: 13px;
         font-weight: 600;
         line-height: 13px;
@@ -162,7 +165,7 @@ body {
     }
 
     &__title {
-        color: #1E1E1E;
+        color: @color_black;
         font-size: 20px;
         font-weight: 500;
         line-height: 20px;
@@ -182,7 +185,7 @@ body {
     }
 
     &__item-input {
-        color: #1E1E1E;
+        color: @color_black;
         width: 100%;
         padding: 0 0 7px;
         font-size: 13px;
@@ -305,7 +308,7 @@ body {
 
     &__avatar-title {
         width: 100%;
-        color: #1E1E1E;
+        color: @color_black;
         text-align: center;
         margin-top: 20px;
         font-size: 16px;
@@ -324,13 +327,13 @@ body {
     }
 
     &__form-title {
-        color: #1E1E1E;
+        color: @color_black;
         font-size: 13px;
         line-height: 13px;
     }
 
     &__form-input {
-        color: #999999;
+        color: @color_main_text;
         font-size: 13px;
         line-height: 13px;
         text-align: right;
@@ -369,7 +372,7 @@ body {
         width: 64px;
         height: 100%;
         cursor: pointer;
-        background: #FBFBFB;
+        background: @color_gray;
 
         display: flex;
         align-items: center;
@@ -387,7 +390,7 @@ body {
 }
 
 .error-page {
-    color: #1E1E1E;
+    color: @color_black;
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;

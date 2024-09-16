@@ -51,7 +51,7 @@ export const reg = [
   },
   {
     "name_ru": "Пароль (ещё раз)",
-    "name": "password",
+    "name": "password_repeat",
     "type": "password",
     "error": "Пароли не совпадают"
   },
