@@ -1,0 +1,50 @@
+<div class="chat">
+  <aside class="chat__left">
+    <div class="chat__left-header">
+      {{> Link
+              href="#"
+              class="chat__left-link-profile"
+              data-page="profile"
+              text="Профиль"
+              class_icon="chat__left-link-profile-icon"
+              icon="arrow-right"
+      }}
+
+      <form class="chat__left-search">
+        <div class="chat__left-search-input-box">
+          <label class="chat__left-search-label">
+            <input type="text" name="search" class="chat__left-search-input">
+          </label>
+
+          <div class="chat__left-search-input-placeholder">
+            <svg class="chat__left-search-input-icon"><use xlink:href="#search" /></svg>
+            Поиск
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="chat__left-list">
+      {{# each chats }}
+        <div class="chat__left-list-item">
+          <div class="chat__left-list-item-avatar chat__left-list-item-avatar_default"></div>
+
+          <div class="chat__left-list-content">
+            <div class="chat__left-list-content-title">{{ this.name }}</div>
+            <div class="chat__left-list-content-message">{{ this.massage }}</div>
+          </div>
+
+          <div class="chat__left-list-item-time">{{ this.time }}</div>
+
+          {{# if this.unread_messages }}
+            <div class="chat__left-list-item-info-message">{{ this.unread_messages }}</div>
+          {{/ if }}
+        </div>
+      {{/ each }}
+    </div>
+  </aside>
+
+  <main class="chat__current chat__current_inactive">
+    Выберите чат, чтобы отправить сообщение
+  </main>
+</div>
