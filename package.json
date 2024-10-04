@@ -10,10 +10,23 @@
     "dev": "vite",
     "build": "vite build",
     "start": "vite build && node server.cjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "eslint": "eslint src/*.ts",
+    "lint:style": "stylelint \"**/*.less\"",
+    "lint:style:fix": "stylelint \"**/*.less\" --fix"
   },
   "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "@types/eslint__js": "^8.42.3",
+    "eslint": "^9.11.1",
+    "globals": "^15.10.0",
     "less": "^4.2.0",
+    "stylelint": "^16.9.0",
+    "stylelint-config-recess-order": "^5.1.1",
+    "stylelint-config-standard-less": "^3.0.1",
+    "stylelint-order": "^6.0.4",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.8.0",
     "vite": "^5.4.1"
   },
   "dependencies": {
