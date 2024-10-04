@@ -11,10 +11,12 @@ export class FormAuthRegItem extends Block {
         type: props.type,
         name: props.name,
         class: 'form-auth-reg__item-input',
-        onBlur: (event: Event) => {
+        onBlur: () => {
           console.log('BLUR');
 
-          validateForm(this._element, 'form-auth-reg__item');
+          if (this._element) {
+            validateForm(this._element, 'form-auth-reg__item');
+          }
         },
       }),
     });

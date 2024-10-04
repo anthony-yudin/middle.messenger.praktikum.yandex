@@ -1,4 +1,4 @@
-import Block from '../../../framework/Block';
+import Block, {BlockProps} from '../../../framework/Block';
 import {Link} from '../../Link';
 import {Button} from "../../Button";
 import {TInput} from "../../../type/form";
@@ -21,7 +21,7 @@ export class Profile extends Block {
           if (successSubmit) {
             this._element?.classList.remove('profile_active-edit');
 
-            this.lists.FormProfileItem.forEach((item: any) => {
+            this.lists.FormProfileItem.forEach((item: BlockProps) => {
               item._element.querySelector('input').setAttribute('disabled', 'true');
             });
           }
@@ -50,7 +50,7 @@ export class Profile extends Block {
 
           this._element?.classList.add('profile_active-edit');
 
-          this.lists.FormProfileItem.forEach((item: any) => {
+          this.lists.FormProfileItem.forEach((item: BlockProps) => {
             item._element.querySelector('input').removeAttribute('disabled');
           });
         },

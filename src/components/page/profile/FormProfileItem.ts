@@ -23,7 +23,6 @@ export class FormProfileItem extends Block {
         },
       }),
     });
-    console.log(this);
   }
 
 

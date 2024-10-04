@@ -1,9 +1,10 @@
 import {validateForm} from "./validateForm";
+import {BlockProps} from "../framework/Block";
 
-export function submitForm(elItems: any, sItem: string) {
-  elItems.forEach((item: any) => validateForm(item._element, sItem));
+export function submitForm(elItems: BlockProps[], sItem: string) {
+  elItems.forEach((item: BlockProps) => validateForm(item._element, sItem));
 
-  if (elItems.every((item: any) => !item._element.classList.contains(`${sItem}_error`))) {
+  if (elItems.every((item: BlockProps) => !item._element.classList.contains(`${sItem}_error`))) {
     const elForm: HTMLFormElement = elItems[0]._element.closest('form');
     const formData: {[index: string]: string} = {}
 

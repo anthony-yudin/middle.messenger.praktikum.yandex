@@ -10,7 +10,7 @@ export default class App {
 
   constructor() {
     this.state = {
-      currentPage: 'reg',
+      currentPage: 'profile',
     };
 
     this.appElement = document.querySelector('.app');
