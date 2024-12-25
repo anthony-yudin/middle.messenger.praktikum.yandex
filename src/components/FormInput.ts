@@ -1,7 +1,7 @@
 import Block from '../framework/Block';
 import {TInput} from "../type/form";
 
-export class FormInput extends Block {
+class FormInput extends Block {
   constructor(props: TInput) {
     super({
       ...props,
@@ -23,3 +23,5 @@ export class FormInput extends Block {
       >`;
   }
 }
+
+export default FormInput;

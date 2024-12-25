@@ -29,7 +29,8 @@ body {
   &__left-header {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
     padding: 21px 10px 0;
   }
 
@@ -42,6 +43,20 @@ body {
     color: @color_main_text;
     text-align: right;
     text-decoration: none;
+  }
+
+  &__left-link-profile_create-chat {
+    color: #fff;
+    padding: 7px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background: @color_blue;
+    transition: .3s;
+
+    &:hover {
+      background: #244db1;
+    }
   }
 
   &__left-link-profile-icon {
@@ -87,7 +102,8 @@ body {
 
   &__left-list {
     max-height: calc(100vh - 105px);
-    padding: 0 10px;
+    padding: 0;
+    margin-right: -11px;
     overflow-y: scroll;
     scrollbar-color: #fff #fff;
     scrollbar-width: thin;
@@ -104,18 +120,24 @@ body {
     display: grid;
     grid-template-columns: 47px 1fr 30px;
     grid-column-gap: 10px;
-    padding: 12px 0;
+    padding: 12px 10px;
     border-top: 1px solid #EAEAEA;
+    transition: .2s;
+    cursor: pointer;
 
     &:last-child {
       border-bottom: 1px solid #EAEAEA;
+    }
+
+    &:hover, &_active {
+      background: #f0f0f0;
     }
   }
 
   &__avatar {
     width: 47px;
     height: 47px;
-    background: #EFEFEF;
+    background: #d1d1d1;
     border-radius: 100px;
   }
 
@@ -139,8 +161,8 @@ body {
 
   &__left-list-item-info-message {
     position: absolute;
-    top: 40px;
-    right: 0;
+    top: 35px;
+    right: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -230,7 +252,7 @@ body {
     &_bottom {
       top: 100%;
       bottom: auto;
-      padding-top: 35px;
+      padding-top: 10px;
       padding-bottom: 0;
     }
 
@@ -241,7 +263,7 @@ body {
   }
 
   &__menu {
-    padding: 15px;
+    padding: 10px 0;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 0 6px 0 #00000024;
@@ -254,6 +276,7 @@ body {
   &__current-header-menu:hover &__menu-box {
     visibility: visible;
     opacity: 1;
+    z-index: 2;
   }
 
   &__current-header-menu:hover &__current-header-menu-point-box {
@@ -261,12 +284,35 @@ body {
   }
 
   &__menu-item {
+    cursor: pointer;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    transition: .3s;
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    &:hover {
+      background: #f1f1f1;
+    }
+  }
+
+  &__menu-item-btn-delete-chat {
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 15px;
+    margin: 10px 15px 0;
+    background: #900000;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    width: calc(100% - 30px);
+    transition: .3s;
+
+    &:hover {
+      background: #e40000;
     }
   }
 
@@ -286,7 +332,7 @@ body {
 
   &__current-body-box {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column-reverse;
     height: calc(100vh - 67px - 60px);
     overflow-y: scroll;
     scrollbar-color: #fff #fff;
@@ -299,16 +345,17 @@ body {
   }
 
   &__current-body {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-end;
+    display: grid;
+    align-self: flex-end;
+    grid-auto-rows: max-content;
+    grid-template-rows: auto;
     width: 100%;
     padding: 0 20px;
   }
 
   &__current-body-time {
     width: 100%;
-    margin-bottom: 30px;
+    margin: 30px 0;
     font-size: 12px;
     font-weight: 500;
     line-height: 12px;
@@ -365,7 +412,7 @@ body {
     left: 0;
     width: 5px;
     height: 2px;
-    background: @color_blue;
+    background: #606060;
     transform: rotate(45deg);
   }
 
@@ -375,7 +422,7 @@ body {
     left: 3px;
     width: 8px;
     height: 2px;
-    background: @color_blue;
+    background: #606060;
     transform: rotate(-45deg);
   }
 
@@ -385,8 +432,14 @@ body {
     left: 8px;
     width: 9px;
     height: 2px;
-    background: @color_blue;
+    background: #606060;
     transform: rotate(-45deg);
+  }
+
+  &__current-body-message-info-box_read &__current-body-message-info:nth-child(1),
+  &__current-body-message-info-box_read &__current-body-message-info:nth-child(2),
+  &__current-body-message-info-box_read &__current-body-message-info:nth-child(3) {
+    background: @color_blue;
   }
 
   &__footer {
@@ -516,6 +569,19 @@ body {
     color: @color_blue;
     text-decoration: none;
   }
+
+  &__error {
+    color: #FF2F2F;
+    font-size: 13px;
+    font-size: 13px;
+    margin-top: 35px;
+    margin-bottom: -30px;
+    display: none;
+
+    &_active {
+      display: block;
+    }
+  }
 }
 
 .btn {
@@ -531,6 +597,11 @@ body {
   background: @color_blue;
   border: none;
   border-radius: 8px;
+  transition: .3s;
+
+  &:hover {
+    background: #244db1;
+  }
 
   &_auth-reg {
     margin-top: 45px;
@@ -540,6 +611,19 @@ body {
 .profile {
   position: relative;
   padding: 60px 0 110px;
+
+  &__form-error {
+    color: red;
+    display: none;
+    font-size: 11px;
+    margin-top: 40px;
+    margin-bottom: -30px;
+    text-align: center;
+  }
+
+  &__form-error_active {
+    display: block;
+  }
 
   &__box {
     width: 100%;
@@ -557,6 +641,10 @@ body {
   &__avatar-img-box {
     position: relative;
     cursor: pointer;
+  }
+
+  &__avatar-img-input {
+    display: none;
   }
 
   &__avatar-img {
@@ -618,7 +706,25 @@ body {
     display: block;
   }
 
-  &_active-edit &__btn_edit {
+  &_active-edit &__btn_edit-info {
+    display: none;
+  }
+
+  &_active-edit &__form-input {
+    color: #000;
+  }
+
+  &__form_edit-password {
+    display: none;
+  }
+
+  &_active-edit-password &__form_edit-password,
+  &_active-edit-password &__btn-save-profile_password {
+    display: block;
+  }
+
+  &_active-edit-password &__form:not(&__form_edit-password),
+  &_active-edit-password &__btn_edit-password {
     display: none;
   }
 
@@ -684,6 +790,9 @@ body {
     line-height: 13px;
     color: @color_blue;
     text-decoration: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
     border-bottom: 1px solid #EAEAEA;
 
     &:last-child {
@@ -749,5 +858,113 @@ body {
     color: @color_blue;
     text-align: center;
     text-decoration: none;
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0000009c;
+  transition: .2s;
+
+  &__box {
+    position: relative;
+    padding: 40px 15px 20px;
+    width: 270px;
+    border-radius: 5px;
+    background: #fff;
+    text-align: left;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 24px;
+    line-height: 33px;
+    color: #2d2d2d;
+    font-weight: bold;
+  }
+
+  &__form-title {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 7px;
+  }
+
+  &__form-input {
+    width: 100%;
+    height: 35px;
+    padding: 0 10px;
+    border: 1px solid #c2c2c2;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+
+  &__form-text {
+    display: none;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  &__form-text_success {
+    color: green;
+  }
+
+  &__form-text_error {
+    color: red;
+  }
+
+  &__form-text_active {
+    display: block;
+  }
+
+  &__close-box {
+    position: absolute;
+    top: -40px;
+    right: -9px;
+    z-index: 1;
+    padding: 20px;
+    border: none;
+    background: 0 0;
+    cursor: pointer;
+    opacity: .5;
+    transition: .3s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__close:after, &__close:before {
+    content: ' ';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    height: 16px;
+    width: 2px;
+    background: #fff;
+    transition-duration: .15s;
+  }
+
+  &__close:before {
+    transform: rotate(45deg);
+  }
+
+  &__close:after {
+    transform: rotate(-45deg);
+  }
+
+  &_active {
+    opacity: 1;
+    visibility: visible;
   }
 }

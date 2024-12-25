@@ -1,10 +1,16 @@
 import Block from '../../../framework/Block';
 import {Link} from '../../Link';
 import {FormAuthRegItem} from './FormAuthRegItem';
-import {Button} from "../../Button";
+import Button from "../../Button";
 import {TInput} from '../../../type/form';
 import {submitForm} from "../../../utils/submitForm";
 import {auth} from '../../../mockData';
+import {router} from "../../../App";
+import {TPages} from "../../../type/pages";
+import RegAuthApi from "../../../api/RegAuthApi";
+import UserApi from "../../../api/UserApi";
+import Store from "../../../framework/Store";
+import {TProfileApi} from '../../../type/profile';
 
 export class Auth extends Block {
   constructor() {
@@ -18,6 +24,8 @@ export class Auth extends Block {
           console.log('CLICK');
           event.preventDefault();
           event.stopPropagation();
+
+          router.go(TPages.reg);
         },
       }),
       ButtonAuth: new Button({
@@ -28,7 +36,26 @@ export class Auth extends Block {
           event.preventDefault();
           event.stopPropagation();
 
-          submitForm(this.lists.FormAuthRegItems, 'form-auth-reg__item');
+          const dataForm = submitForm(this.lists.FormAuthRegItems, 'form-auth-reg__item');
+
+          if (dataForm) {
+            RegAuthApi.authApi(dataForm).then(() => {
+              UserApi.getProfile().then((data: TProfileApi) => {
+                Store.set("profile", {
+                  "id": data.id,
+                  "email": data.email,
+                  "login": data.login,
+                  "firstName": data.first_name,
+                  "secondName": data.second_name,
+                  "displayName": data.display_name,
+                  "avatar": data.avatar,
+                  "phone": data.phone
+                });
+              });
+
+              router.go(TPages.chat);
+            });
+          }
         },
       }),
       FormAuthRegItems: auth.map((item: TInput) => new FormAuthRegItem(item))
