@@ -1,7 +1,7 @@
 import Block from '../../../framework/Block';
 
 class InputAvatar extends Block {
-  constructor(props) {
+  constructor(props: { onChange?: (e: Event) => void }) {
     super({
       ...props,
       events: {

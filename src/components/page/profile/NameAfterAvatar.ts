@@ -1,6 +1,5 @@
 import Block, { BlockProps } from '../../../framework/Block';
 import {connect} from "../../../framework/HOC";
-import FormProfileItem from "./FormProfileItem";
 
 class NameAfterAvatar extends Block {
   constructor(props: BlockProps) {
