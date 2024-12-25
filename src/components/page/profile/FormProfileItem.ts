@@ -1,19 +1,22 @@
 import Block from '../../../framework/Block';
-import {FormInput} from "../../FormInput";
+import FormInput from "../../FormInput";
 import {validateForm} from "../../../utils/validateForm";
 import {TInput} from "../../../type/form";
+import {connect} from "../../../framework/HOC";
+import Store from "../../../framework/Store";
 
-export class FormProfileItem extends Block {
+class FormProfileItem extends Block {
   constructor(props: TInput) {
     super({
       ...props,
 
       FormInput: new FormInput({
+
         type: props.type,
         name: props.name,
         value: props.value,
-        class: 'profile__form-input',
-        disabled: true,
+        class: `profile__form-input${props.class ? ` ${props.class}` : ''}`,
+        disabled: props.disabled,
         onBlur: () => {
           console.log('BLUR');
 
@@ -25,8 +28,6 @@ export class FormProfileItem extends Block {
     });
   }
 
-
-
   render(): string {
     return `
       <div class="profile__form-item">
@@ -37,3 +38,6 @@ export class FormProfileItem extends Block {
   `;
   }
 }
+
+const withUser = connect(state => ({ value: state.profile.email }));
+export default FormProfileItem;

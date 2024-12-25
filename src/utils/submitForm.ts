@@ -16,10 +16,10 @@ export function submitForm(elItems: BlockProps[], sItem: string) {
       }
     });
 
-    console.log('formData:', formData);
+    // console.log('formData:', formData);
 
     if (Object.values(formData)?.length) {
-      return true;
+      return formData;
     }
   }
 

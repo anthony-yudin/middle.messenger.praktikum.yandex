@@ -86,7 +86,7 @@ export function validateForm(elItem: HTMLElement, sItem: string) {
         const arrValue = [...value];
         const isNumber = arrValue.some(item => typeof Number(item) === 'number' && !isNaN(Number(item)));
         const isUpperCaseChar = arrValue.some(item => item.toUpperCase() === item && isNaN(Number(item)));
-        const elsInputPassword: NodeListOf<HTMLInputElement> | undefined = elForm?.querySelectorAll('[type=password]');
+        const elsInputPassword: NodeListOf<HTMLInputElement> | undefined = elForm?.querySelectorAll('.password[type=password]');
         const valuePasswordRepeat: string | null = elsInputPassword ? elsInputPassword[1]?.value : null;
 
         if (value.length > 7 && value.length < 41 && isNumber && isUpperCaseChar) {
@@ -124,7 +124,7 @@ export function validateForm(elItem: HTMLElement, sItem: string) {
       break;
 
     case 'password_repeat':
-      const elInputPassword: HTMLInputElement | null | undefined = elForm?.querySelector('[type=password]');
+      const elInputPassword: HTMLInputElement | null | undefined = elForm?.querySelector('.password[type=password]');
       const valuePassword: string | undefined = elInputPassword?.value;
 
       if (valuePassword && valuePassword === value) {

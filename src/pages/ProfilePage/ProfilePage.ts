@@ -1,5 +1,5 @@
 import Block from '../../framework/Block';
-import { Profile } from '../../components/page/profile/Profile';
+import Profile from '../../components/page/profile/Profile';
 
 export class ProfilePage extends Block {
   constructor() {

@@ -7,6 +7,7 @@ export class FormTextarea extends Block {
       ...props,
       events: {
         blur: () => props.onBlur && props.onBlur(),
+        keydown: (e: Event) => props.keydown && props.keydown(e),
       },
     });
   }

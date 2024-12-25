@@ -4,12 +4,14 @@ type TButton = {
   class: string;
   text?: string;
   class_icon?: string;
+  class_inner?: string,
+  text_inner?: string,
   icon?: string;
   disabled?: string,
   onClick?: (e: Event) => void;
 }
 
-export class Button extends Block {
+class Button extends Block {
   constructor(props: TButton) {
     super({
       ...props,
@@ -26,6 +28,12 @@ export class Button extends Block {
           disabled
         {{/ if }}>
         
+        {{# if class_inner }}
+          <span class="{{ class_inner }}">
+            {{# if text_inner }}{{ text_inner }}{{/ if }}
+          </span>
+        {{/ if }}
+        
         {{# if class_icon }}
           {{# if icon }}
             <svg class="{{ class_icon }}"><use xlink:href="#{{ icon }}" /></svg>
@@ -36,3 +44,8 @@ export class Button extends Block {
     `;
   }
 }
+
+// const withUser = connect(state => ({ text: state.button }));
+// export default withUser(Button);
+
+export default Button;
