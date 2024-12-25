@@ -69,6 +69,7 @@ export default class ChatsUpdate {
 
     Store.set("chatActive", Store.getState("chats")[`'${itemChat.id}'`])
     this.updateChatsMessages();
+
   }
 
   static updateChatsList() {
@@ -84,14 +85,16 @@ export default class ChatsUpdate {
     if (Store.getState("chatActive")?.messages) {
       thisChat.children.MessageChat.setProps({ isChatActive: true })
 
+      console.log(Store.getState("chatActive")?.messages, 'Store.getState("chatActive")?.messages')
+
       thisChat.children.MessageChat.setLists({
-        MessageItemChatTest: Store.getState("chatActive")?.messages?.map((item: TChat) => new MessageItemChat({
+        MessageItemChat: Store.getState("chatActive")?.messages?.map((item: TChat) => new MessageItemChat({
           ...item,
         })),
       });
     } else {
       thisChat.children.MessageChat.setLists({
-        MessageItemChatTest: []
+        MessageItemChat: []
       });
     }
   }

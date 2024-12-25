@@ -5,11 +5,11 @@ export enum StoreEvents {
   Updated = 'updated',
 }
 
-type Indexed<T = any> = {
+type Indexed<T = never> = {
   [key in string]: T;
 };
 
-type PlainObject<T = unknown> = {
+type PlainObject<T = never> = {
   [k in string]: T;
 };
 
@@ -28,7 +28,7 @@ function isArrayOrObject(value: unknown): value is ([] | PlainObject) {
   return isPlainObject(value) || isArray(value);
 }
 
-export function isEqual(lhs: PlainObject | [], rhs: PlainObject | []) {
+export function isEqual(lhs: PlainObject, rhs: PlainObject) {
   // Сравнение количества ключей объектов и массивов
   if (Object.keys(lhs).length !== Object.keys(rhs).length) {
     return false;

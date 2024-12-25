@@ -129,6 +129,8 @@ export default class MessageChat extends Block {
         },
       }),
     });
+
+    console.log(this, 'this');
   }
 
   render(): string {
