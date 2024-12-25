@@ -5,7 +5,7 @@ export enum StoreEvents {
   Updated = 'updated',
 }
 
-type Indexed<T = never> = {
+type Indexed<T = any> = {
   [key in string]: T;
 };
 
