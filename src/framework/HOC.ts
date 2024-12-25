@@ -9,7 +9,7 @@ type Indexed<T = any> = {
   [key in string]: T;
 };
 
-type PlainObject<T = never> = {
+type PlainObject<T = any> = {
   [k in string]: T;
 };
 

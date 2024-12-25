@@ -10,7 +10,7 @@ type Indexed<T = any> = {
 
 function merge(lhs: Indexed, rhs: Indexed): Indexed {
   for (let p in rhs) {
-    if (!rhs.hasOwnProperty(p)) {
+    if (!Object.prototype.hasOwnProperty.call(rhs, p)) {
       continue;
     }
 
