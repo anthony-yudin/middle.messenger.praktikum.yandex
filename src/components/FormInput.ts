@@ -1,7 +1,5 @@
 import Block from '../framework/Block';
 import {TInput} from "../type/form";
-import {connect} from "../framework/HOC";
-import Store from "../framework/Store";
 
 class FormInput extends Block {
   constructor(props: TInput) {
@@ -26,5 +24,4 @@ class FormInput extends Block {
   }
 }
 
-const withUser = connect(state => ({ state: state }));
 export default FormInput;

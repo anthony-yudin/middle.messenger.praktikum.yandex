@@ -3,7 +3,7 @@ import {ListChats} from "../components/page/chat/ListChats";
 import Store from "../framework/Store";
 import ChatsApi from "../api/ChatsApi";
 import connectSocket from "./connectSocket";
-import MessageItemChatTest from "../components/page/chat/MessageItemChatTest";
+import MessageItemChat from "../components/page/chat/MessageItemChat";
 import {setDate} from "../utils/setDate";
 import {setViewChatActive, thisChat} from "../components/page/chat/Chat";
 
@@ -85,7 +85,7 @@ export default class ChatsUpdate {
       thisChat.children.MessageChat.setProps({ isChatActive: true })
 
       thisChat.children.MessageChat.setLists({
-        MessageItemChatTest: Store.getState("chatActive")?.messages?.map((item: TChat) => new MessageItemChatTest({
+        MessageItemChatTest: Store.getState("chatActive")?.messages?.map((item: TChat) => new MessageItemChat({
           ...item,
         })),
       });

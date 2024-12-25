@@ -1,6 +1,4 @@
 import HTTPTransport from "../framework/HTTPTransport";
-import {WebSocket} from "vite";
-import CloseEvent = WebSocket.CloseEvent;
 
 class SocketApi extends HTTPTransport {
   connect(userId: string, token: string, chatId: string) {

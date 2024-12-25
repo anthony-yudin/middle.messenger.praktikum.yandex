@@ -2,8 +2,6 @@ import Block from '../../../framework/Block';
 import FormInput from "../../FormInput";
 import {validateForm} from "../../../utils/validateForm";
 import {TInput} from "../../../type/form";
-import {connect} from "../../../framework/HOC";
-import Store from "../../../framework/Store";
 
 class FormProfileItem extends Block {
   constructor(props: TInput) {
@@ -39,5 +37,4 @@ class FormProfileItem extends Block {
   }
 }
 
-const withUser = connect(state => ({ value: state.profile.email }));
 export default FormProfileItem;

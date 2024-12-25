@@ -1,7 +1,7 @@
 import Block from '../../../framework/Block';
 
 class ChangeAvatar extends Block {
-  constructor(props) {
+  constructor(props: { onClick?: (e: Event) => void }) {
     super({
       ...props,
       events: {

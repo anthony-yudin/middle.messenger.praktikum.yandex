@@ -6,7 +6,7 @@ import TitleChat from "./TitleChat";
 import AvatarChat from "./AvatarChat";
 import Store from "../../../framework/Store";
 import SocketApi from "../../../api/SocketApi";
-import MessageItemChatTest from "./MessageItemChatTest";
+import MessageItemChat from "./MessageItemChat";
 import ChatsApi from "../../../api/ChatsApi";
 import ChatsUpdate from "../../../controllers/ChatsUpdate";
 import {thisChat} from "./Chat";
@@ -21,7 +21,7 @@ export default class MessageChat extends Block {
   }) {
     super({
       isChatActive: props.isChatActive,
-      MessageItemChatTest: Store.getState("chatActive")?.messages?.map((item: TChat) => new MessageItemChatTest({
+      MessageItemChat: Store.getState("chatActive")?.messages?.map((item: TChat) => new MessageItemChat({
         ...item,
       })),
       TitleChat: new TitleChat({ title: '' }),
@@ -166,7 +166,7 @@ export default class MessageChat extends Block {
 
         <div class="chat__current-body-box">
           <div class="chat__current-body">
-            {{{ MessageItemChatTest }}}
+            {{{ MessageItemChat }}}
           </div>
         </div>
 
