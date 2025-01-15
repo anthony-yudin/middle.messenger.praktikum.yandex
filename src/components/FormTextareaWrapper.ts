@@ -2,6 +2,8 @@ import Block from '../framework/Block';
 import {validateForm} from "../utils/validateForm";
 import {TFormTextareaWrapper} from '../type/form';
 import {FormTextarea} from "./FormTextarea";
+import SocketApi from "../api/SocketApi";
+import Store from "../framework/Store";
 
 export class FormTextareaWrapper extends Block {
   constructor(props: TFormTextareaWrapper) {
@@ -12,15 +14,26 @@ export class FormTextareaWrapper extends Block {
         class: 'chat__message-send-input',
         placeholder: props.textarea.placeholder,
         onBlur: () => {
-          console.log('BLUR');
-
           if (this._element) {
             validateForm(this._element, this.props.classWrapper);
           }
         },
+        keydown: (event: KeyboardEvent) => {
+          const target: EventTarget | null = event.target;
+
+          if (target) {
+            if (event.shiftKey && event.keyCode == 13) {
+              event.preventDefault();
+
+              (target as HTMLTextAreaElement).value = (target as HTMLTextAreaElement).value + '\n';
+            } else if (event.keyCode === 13 && !event.shiftKey) {
+              SocketApi.send(Store.getState("chatActive").socket, (target as HTMLTextAreaElement).value.replace('\n', ''));
+              (target as HTMLTextAreaElement).value = '';
+            }
+          }
+        }
       }),
     });
-    console.log(typeof this._element);
   }
 
   render(): string {

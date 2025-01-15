@@ -16,9 +16,11 @@ type TData = Record<string, string>;
 
 // Тип Omit принимает два аргумента: первый — тип, второй — строка
 // и удаляет из первого типа ключ, переданный вторым аргументом
-type TOptionsWithoutMethod = Omit<TOptions, 'method'>;
+// Omit<TOptions, 'method'>;
 // Этот тип эквивалентен следующему:
 // type OptionsWithoutMethod = { data?: any };
+
+type HTTPMethod = (url: string, options?: Omit<TOptions, 'method'>) => Promise<unknown>
 
 function queryStringify(data: TData) {
   if (typeof data !== 'object') {
@@ -34,21 +36,21 @@ function queryStringify(data: TData) {
 }
 
 export default class HTTPTransport {
-  get(url: string, options: TOptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-    return this.request(url, {...options, method: METHOD.GET});
-  };
+  get: HTTPMethod = (url, options = {}) => (
+    this.request(url, {...options, method: METHOD.GET})
+  )
 
-  post = (url: string, options: TOptionsWithoutMethod = {}) => {
-    return this.request(url, {...options, method: METHOD.POST});
-  };
+  post: HTTPMethod = (url, options = {}) => (
+    this.request(url, {...options, method: METHOD.POST})
+  )
 
-  put = (url: string, options: TOptionsWithoutMethod = {}) => {
-    return this.request(url, {...options, method: METHOD.PUT});
-  };
+  put: HTTPMethod = (url, options = {}) => (
+    this.request(url, {...options, method: METHOD.PUT})
+  )
 
-  delete = (url: string, options: TOptionsWithoutMethod = {}) => {
-    return this.request(url, {...options, method: METHOD.DELETE});
-  };
+  delete: HTTPMethod = (url, options = {}) => (
+    this.request(url, {...options, method: METHOD.DELETE})
+  )
 
   request(url: string, options: TOptions = { method: METHOD.GET, timeout: 5000 }): Promise<XMLHttpRequest> {
     const {method, data, timeout} = options;
@@ -71,8 +73,20 @@ export default class HTTPTransport {
       );
 
       xhr.onload = function() {
-        resolve(xhr);
+        if (xhr.status != 200) {
+          reject(JSON.parse(xhr.response).reason);
+        } else {
+          try {
+            resolve(JSON.parse(xhr.response));
+
+            return true;
+          } catch {
+            resolve(xhr);
+          }
+        }
       };
+
+      xhr.withCredentials = true;
 
       xhr.onabort = reject;
       xhr.onerror = reject;
@@ -85,7 +99,10 @@ export default class HTTPTransport {
 
       if (method === METHOD.GET || !data) {
         xhr.send();
+      } else if (data instanceof FormData) {
+          xhr.send(data);
       } else {
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.send(data as Document | XMLHttpRequestBodyInit | null | undefined);
       }
     });

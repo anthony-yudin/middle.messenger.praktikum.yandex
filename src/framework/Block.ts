@@ -85,8 +85,8 @@ export default class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  private _componentDidUpdate(oldProps: BlockProps, newProps: BlockProps): void {
-    const response = this.componentDidUpdate(oldProps, newProps);
+  private _componentDidUpdate(): void {
+    const response = this.componentDidUpdate();
 
     if (!response) {
       return;
@@ -94,9 +94,8 @@ export default class Block {
     this._render();
   }
 
-  //
-  protected componentDidUpdate(oldProps: BlockProps, newProps: BlockProps): boolean {
-    console.log(oldProps, newProps);
+  protected componentDidUpdate(): boolean {
+    this._render();
 
     return true;
   }
@@ -140,6 +139,15 @@ export default class Block {
     }
 
     Object.assign(this.props, nextProps);
+  };
+
+  public setLists = (nextLists: BlockProps): void => {
+    if (!nextLists) {
+      return;
+    }
+
+    Object.assign(this.lists, nextLists);
+    this.componentDidUpdate();
   };
 
   get element(): HTMLElement | null {

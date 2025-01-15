@@ -1,5 +1,5 @@
 import Block from '../../../framework/Block';
-import {FormInput} from "../../FormInput";
+import FormInput from "../../FormInput";
 import {validateForm} from "../../../utils/validateForm";
 import {TInput} from "../../../type/form";
 
@@ -10,7 +10,7 @@ export class FormAuthRegItem extends Block {
       FormInput: new FormInput({
         type: props.type,
         name: props.name,
-        class: 'form-auth-reg__item-input',
+        class: `form-auth-reg__item-input${props.class ? ` ${props.class}` : ''}`,
         onBlur: () => {
           console.log('BLUR');
 

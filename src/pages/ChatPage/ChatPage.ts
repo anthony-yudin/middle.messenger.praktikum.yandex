@@ -1,5 +1,5 @@
 import Block from '../../framework/Block';
-import {Chat} from '../../components/Chat';
+import Chat from '../../components/page/chat/Chat';
 
 export class ChatPage extends Block {
   constructor() {
