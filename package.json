@@ -32,7 +32,7 @@
     "jsdom": "^26.0.0",
     "less": "^4.2.0",
     "mocha": "^11.0.1",
-    "sinon": "^19.0.2",
+    "sinon": "^17.0.1",
     "stylelint": "^16.9.0",
     "stylelint-config-recess-order": "^5.1.1",
     "stylelint-config-standard-less": "^3.0.1",
