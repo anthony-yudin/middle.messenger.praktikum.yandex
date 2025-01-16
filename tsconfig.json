@@ -10,6 +10,11 @@
     "noUnusedParameters": true,
     "strictNullChecks": true
   },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "transpileOnly": true
+  },
   "include": [
     "src",
     "eslint.config.mjs"
