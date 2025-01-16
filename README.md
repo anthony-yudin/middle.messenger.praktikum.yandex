@@ -15,6 +15,9 @@ Figma - https://www.figma.com/design/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?n
 
 Запуск сборки для разработки: `npm run dev`
 
+Запуск тестов: `npm run test`
+
+
 ## Ссылки:
 
 ### На веб-приложение:

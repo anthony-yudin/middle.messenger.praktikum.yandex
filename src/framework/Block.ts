@@ -157,7 +157,6 @@ export default class Block {
   private _render(): void {
     this._removeEvents();
 
-    console.log('Render');
     const propsAndStubs = {...this.props};
     const _tmpId = Math.floor(100000 + Math.random() * 900000);
     Object.entries(this.children).forEach(([key, child]) => {
