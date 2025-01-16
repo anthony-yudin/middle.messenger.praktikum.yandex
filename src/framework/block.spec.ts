@@ -1,4 +1,4 @@
-import Block, {BlockProps} from './Block';
+import Block from './Block';
 import sinon from 'sinon';
 import { expect } from "chai";
 
@@ -7,7 +7,7 @@ describe('Block', () => {
 
   before(() => {
     class Page extends Block {
-      constructor(props: BlockProps) {
+      constructor(props: any) {
         super({ ...props })
       }
 
