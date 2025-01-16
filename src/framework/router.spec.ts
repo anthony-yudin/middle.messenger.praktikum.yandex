@@ -37,7 +37,7 @@ describe('Router', () => {
     router.go('/test1');
     router.go('/test2');
 
-    expect(pushStateStub.callCount).to.equal(4);
+    expect(pushStateStub.callCount).to.equal(3);
   });
 
   it('"Назад" по истории роутера', () => {

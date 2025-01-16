@@ -14,7 +14,8 @@
     "eslint": "eslint src/*.ts",
     "lint:style": "stylelint \"**/*.less\"",
     "lint:style:fix": "stylelint \"**/*.less\" --fix",
-    "test": "mocha"
+    "test": "mocha",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
@@ -31,7 +32,7 @@
     "chai": "^5.1.2",
     "eslint": "^9.11.1",
     "globals": "^15.10.0",
-    "husky": "^9.1.7",
+    "husky": "^8.0.0",
     "jsdom": "^26.0.0",
     "less": "^4.2.0",
     "mocha": "^11.0.1",
