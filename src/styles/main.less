@@ -573,7 +573,6 @@ body {
   &__error {
     color: #FF2F2F;
     font-size: 13px;
-    font-size: 13px;
     margin-top: 35px;
     margin-bottom: -30px;
     display: none;
@@ -710,10 +709,6 @@ body {
     display: none;
   }
 
-  &_active-edit &__form-input {
-    color: #000;
-  }
-
   &__form_edit-password {
     display: none;
   }
@@ -821,6 +816,10 @@ body {
     width: 28px;
     height: 28px;
     pointer-events: none;
+  }
+
+  &_active-edit &__form-input {
+    color: #000;
   }
 }
 
@@ -944,22 +943,23 @@ body {
     }
   }
 
-  &__close:after, &__close:before {
+  &__close::after, &__close::before {
     content: ' ';
     position: absolute;
     top: 10px;
     left: 20px;
+    height: 16px;
     height: 16px;
     width: 2px;
     background: #fff;
     transition-duration: .15s;
   }
 
-  &__close:before {
+  &__close::before {
     transform: rotate(45deg);
   }
 
-  &__close:after {
+  &__close::after {
     transform: rotate(-45deg);
   }
 
